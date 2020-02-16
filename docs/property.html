@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Property · iHook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="When configuring notification conditions, you may specify [JsonPath](https://github.com/json-path/JsonPath) expression in the property field to extract response data for evaluation. Here an example of how JsonPath expression works."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Property · iHook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://caogecym.github.io/lemon-docindex"/><meta property="og:description" content="When configuring notification conditions, you may specify [JsonPath](https://github.com/json-path/JsonPath) expression in the property field to extract response data for evaluation. Here an example of how JsonPath expression works."/><meta property="og:image" content="https://caogecym.github.io/lemon-doc/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://caogecym.github.io/lemon-doc/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/lemon-docimg/infinity-32.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/lemon-docjs/scrollSpy.js"></script><link rel="stylesheet" href="/lemon-doccss/main.css"/><script src="/lemon-docjs/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/lemon-doc"><img class="logo" src="/lemon-docimg/infinity-32.png" alt="iHook"/><h2 class="headerTitleWithLogo">iHook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://ihook.us" target="_self">Home</a></li><li class=""><a href="https://ihook.us/company" target="_self">About Us</a></li><li class=""><a href="https://ihook.us/dashboard" target="_self">Dashboard</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Notifications</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Quick Start</h3><ul class=""><li class="navListItem"><a class="navItem" href="/lemon-docdocs/quick-start">Create your first task</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Notifications</h3><ul class=""><li class="navListItem"><a class="navItem" href="/lemon-docdocs/notification-overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/lemon-docdocs/source">Source</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/lemon-docdocs/property">Property</a></li><li class="navListItem"><a class="navItem" href="/lemon-docdocs/comparison">Comparison</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Property</h1></header><article><div><span><p>When configuring notification conditions, you may specify <a href="https://github.com/json-path/JsonPath">JsonPath</a> expression in the property field to extract response data for evaluation. Here an example of how JsonPath expression works.</p>
+<h2><a class="anchor" aria-hidden="true" id="jsonpath-examples"></a><a href="#jsonpath-examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JsonPath Examples</h2>
+<p>Given the JSON response</p>
+<pre><code class="hljs css language-javascript">{
+    <span class="hljs-string">"store"</span>: {
+        <span class="hljs-string">"book"</span>: [
+            {
+                <span class="hljs-string">"category"</span>: <span class="hljs-string">"reference"</span>,
+                <span class="hljs-string">"author"</span>: <span class="hljs-string">"Nigel Rees"</span>,
+                <span class="hljs-string">"title"</span>: <span class="hljs-string">"Sayings of the Century"</span>,
+                <span class="hljs-string">"price"</span>: <span class="hljs-number">8.95</span>
+            },
+            {
+                <span class="hljs-string">"category"</span>: <span class="hljs-string">"fiction"</span>,
+                <span class="hljs-string">"author"</span>: <span class="hljs-string">"Evelyn Waugh"</span>,
+                <span class="hljs-string">"title"</span>: <span class="hljs-string">"Sword of Honour"</span>,
+                <span class="hljs-string">"price"</span>: <span class="hljs-number">12.99</span>
+            },
+            {
+                <span class="hljs-string">"category"</span>: <span class="hljs-string">"fiction"</span>,
+                <span class="hljs-string">"author"</span>: <span class="hljs-string">"Herman Melville"</span>,
+                <span class="hljs-string">"title"</span>: <span class="hljs-string">"Moby Dick"</span>,
+                <span class="hljs-string">"isbn"</span>: <span class="hljs-string">"0-553-21311-3"</span>,
+                <span class="hljs-string">"price"</span>: <span class="hljs-number">8.99</span>
+            },
+            {
+                <span class="hljs-string">"category"</span>: <span class="hljs-string">"fiction"</span>,
+                <span class="hljs-string">"author"</span>: <span class="hljs-string">"J. R. R. Tolkien"</span>,
+                <span class="hljs-string">"title"</span>: <span class="hljs-string">"The Lord of the Rings"</span>,
+                <span class="hljs-string">"isbn"</span>: <span class="hljs-string">"0-395-19395-8"</span>,
+                <span class="hljs-string">"price"</span>: <span class="hljs-number">22.99</span>
+            }
+        ],
+        <span class="hljs-string">"bicycle"</span>: {
+            <span class="hljs-string">"color"</span>: <span class="hljs-string">"red"</span>,
+            <span class="hljs-string">"price"</span>: <span class="hljs-number">19.95</span>
+        }
+    },
+    <span class="hljs-string">"expensive"</span>: <span class="hljs-number">10</span>
+}
+</code></pre>
+<table>
+<thead>
+<tr><th style="text-align:left">JsonPath (click link to try)</th><th style="text-align:left">Result</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.bicycle.color" target="_blank">store.bicycle.color</a></td><td style="text-align:left">red</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book.length()" target="_blank">store.book.length()</a></td><td style="text-align:left">4</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[2]" target="_blank">store.book[2]</a></td><td style="text-align:left">The third book</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[-2]" target="_blank">store.book[-2]</a></td><td style="text-align:left">The second to last book</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[0,1]" target="_blank">store.book[0,1]</a></td><td style="text-align:left">The first two books</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[:2]" target="_blank">store.book[:2]</a></td><td style="text-align:left">All books from index 0 (inclusive) until index 2 (exclusive)</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[1:2]" target="_blank">store.book[1:2]</a></td><td style="text-align:left">All books from index 1 (inclusive) until index 2 (exclusive)</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[-2:]" target="_blank">store.book[-2:]</a></td><td style="text-align:left">Last two books</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[2:]" target="_blank">store.book[2:]</a></td><td style="text-align:left">Book number two from tail</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[*].author" target="_blank">store.book[*].author</a></td><td style="text-align:left">The authors of all books</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=.author" target="_blank">.author</a></td><td style="text-align:left">All authors</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.*" target="_blank">store.*</a></td><td style="text-align:left">All things, both books and bicycles</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store..price" target="_blank">store..price</a></td><td style="text-align:left">The price of everything</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[?(@.isbn)]" target="_blank">store.book[?(@.isbn)]</a></td><td style="text-align:left">All books with an ISBN number</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[?(@.price < 10)]" target="_blank">store.book[?(@.price &lt; 10)]</a></td><td style="text-align:left">All books in store cheaper than 10</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[?(@.price <= $['expensive'])]" target="_blank">store.book[?(@.price &lt;= $['expensive'])]</a></td><td style="text-align:left">All books in store that are not &quot;expensive&quot;</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=store.book[?(@.author =~ /.*REES/i)]" target="_blank">store.book[?(@.author =~ /.*REES/i)]</a></td><td style="text-align:left">All books matching regex (ignore case)</td></tr>
+<tr><td style="text-align:left"><a href="http://jsonpath.herokuapp.com/?path=.*" target="_blank">.*</a></td><td style="text-align:left">Give me every thing</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="operators"></a><a href="#operators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Operators</h2>
+<table>
+<thead>
+<tr><th style="text-align:left">Operator</th><th style="text-align:left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left"><code>@</code></td><td style="text-align:left">The current node being processed by a filter predicate.</td></tr>
+<tr><td style="text-align:left"><code>*</code></td><td style="text-align:left">Wildcard. Available anywhere a name or numeric are required.</td></tr>
+<tr><td style="text-align:left"><code>..</code></td><td style="text-align:left">Deep scan. Available anywhere a name is required.</td></tr>
+<tr><td style="text-align:left"><code>.&lt;name&gt;</code></td><td style="text-align:left">Dot-notated child</td></tr>
+<tr><td style="text-align:left"><code>['&lt;name&gt;' (, '&lt;name&gt;')]</code></td><td style="text-align:left">Bracket-notated child or children</td></tr>
+<tr><td style="text-align:left"><code>[&lt;number&gt; (, &lt;number&gt;)]</code></td><td style="text-align:left">Array index or indexes</td></tr>
+<tr><td style="text-align:left"><code>[start:end]</code></td><td style="text-align:left">Array slice operator</td></tr>
+<tr><td style="text-align:left"><code>[?(&lt;expression&gt;)]</code></td><td style="text-align:left">Filter expression. Expression must evaluate to a boolean value.</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="functions"></a><a href="#functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions</h2>
+<p>Functions can be invoked at the tail end of a path - the input to a function is the output of the path expression.
+The function output is dictated by the function itself.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Function</th><th style="text-align:left">Description</th><th>Output</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">min()</td><td style="text-align:left">Provides the min value of an array of numbers</td><td>Double</td></tr>
+<tr><td style="text-align:left">max()</td><td style="text-align:left">Provides the max value of an array of numbers</td><td>Double</td></tr>
+<tr><td style="text-align:left">avg()</td><td style="text-align:left">Provides the average value of an array of numbers</td><td>Double</td></tr>
+<tr><td style="text-align:left">stddev()</td><td style="text-align:left">Provides the standard deviation value of an array of numbers</td><td>Double</td></tr>
+<tr><td style="text-align:left">length()</td><td style="text-align:left">Provides the length of an array</td><td>Integer</td></tr>
+<tr><td style="text-align:left">sum()</td><td style="text-align:left">Provides the sum value of an array of numbers</td><td>Double</td></tr>
+</tbody>
+</table>
+<h2><a class="anchor" aria-hidden="true" id="filter-operators"></a><a href="#filter-operators" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filter Operators</h2>
+<p>Filters are logical expressions used to filter arrays. A typical filter would be <code>[?(@.age &gt; 18)]</code> where <code>@</code> represents the current item being processed. More complex filters can be created with logical operators <code>&amp;&amp;</code> and <code>||</code>. String literals must be enclosed by single or double quotes (<code>[?(@.color == 'blue')]</code> or <code>[?(@.color == &quot;blue&quot;)]</code>).</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Operator</th><th style="text-align:left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">==</td><td style="text-align:left">left is equal to right (note that 1 is not equal to '1')</td></tr>
+<tr><td style="text-align:left">!=</td><td style="text-align:left">left is not equal to right</td></tr>
+<tr><td style="text-align:left">&lt;</td><td style="text-align:left">left is less than right</td></tr>
+<tr><td style="text-align:left">&lt;=</td><td style="text-align:left">left is less or equal to right</td></tr>
+<tr><td style="text-align:left">&gt;</td><td style="text-align:left">left is greater than right</td></tr>
+<tr><td style="text-align:left">&gt;=</td><td style="text-align:left">left is greater than or equal to right</td></tr>
+<tr><td style="text-align:left">=~</td><td style="text-align:left">left matches regular expression  [?(@.name =~ /foo.*?/i)]</td></tr>
+<tr><td style="text-align:left">in</td><td style="text-align:left">left exists in right [?(@.size in ['S', 'M'])]</td></tr>
+<tr><td style="text-align:left">nin</td><td style="text-align:left">left does not exists in right</td></tr>
+<tr><td style="text-align:left">subsetof</td><td style="text-align:left">left is a subset of right [?(@.sizes subsetof ['S', 'M', 'L'])]</td></tr>
+<tr><td style="text-align:left">anyof</td><td style="text-align:left">left has an intersection with right [?(@.sizes anyof ['M', 'L'])]</td></tr>
+<tr><td style="text-align:left">noneof</td><td style="text-align:left">left has no intersection with right [?(@.sizes noneof ['M', 'L'])]</td></tr>
+<tr><td style="text-align:left">size</td><td style="text-align:left">size of left (array or string) should match right</td></tr>
+<tr><td style="text-align:left">empty</td><td style="text-align:left">left (array or string) should be empty</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/lemon-docdocs/source"><span class="arrow-prev">← </span><span>Source</span></a><a class="docs-next button" href="/lemon-docdocs/comparison"><span>Comparison</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#jsonpath-examples">JsonPath Examples</a></li><li><a href="#operators">Operators</a></li><li><a href="#functions">Functions</a></li><li><a href="#filter-operators">Filter Operators</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 iHook, Inc.</section></footer></div></body></html>

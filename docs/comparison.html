@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Comparison · iHook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="When configuring notification conditions, you may use the following method to compare between response source value and expected value."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Comparison · iHook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://caogecym.github.io/lemon-docindex"/><meta property="og:description" content="When configuring notification conditions, you may use the following method to compare between response source value and expected value."/><meta property="og:image" content="https://caogecym.github.io/lemon-doc/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://caogecym.github.io/lemon-doc/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/lemon-docimg/infinity-32.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/lemon-docjs/scrollSpy.js"></script><link rel="stylesheet" href="/lemon-doccss/main.css"/><script src="/lemon-docjs/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/lemon-doc"><img class="logo" src="/lemon-docimg/infinity-32.png" alt="iHook"/><h2 class="headerTitleWithLogo">iHook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://ihook.us" target="_self">Home</a></li><li class=""><a href="https://ihook.us/company" target="_self">About Us</a></li><li class=""><a href="https://ihook.us/dashboard" target="_self">Dashboard</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Notifications</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Quick Start</h3><ul class=""><li class="navListItem"><a class="navItem" href="/lemon-docdocs/quick-start">Create your first task</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Notifications</h3><ul class=""><li class="navListItem"><a class="navItem" href="/lemon-docdocs/notification-overview">Overview</a></li><li class="navListItem"><a class="navItem" href="/lemon-docdocs/source">Source</a></li><li class="navListItem"><a class="navItem" href="/lemon-docdocs/property">Property</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/lemon-docdocs/comparison">Comparison</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Comparison</h1></header><article><div><span><p>When configuring notification conditions, you may use the following method to compare between response source value and expected value.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Comparison</th><th style="text-align:left">Description</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">equal (string)</td><td style="text-align:left">A string equality check on the given property and value. The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">not equal (string)</td><td style="text-align:left">The given string property is not equal to the given string value. The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">contains (string)</td><td style="text-align:left">The given string value is found in the given property. The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">not contain (string)</td><td style="text-align:left">The given string value is not found in the given property. The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">equals (number)</td><td style="text-align:left">The source property is numerically equal to the given value. This comparison ensures the values are able to be converted to numbers.</td></tr>
+<tr><td style="text-align:left">not equal (number)</td><td style="text-align:left">The given property is not equal to the given number value.</td></tr>
+<tr><td style="text-align:left">greater than (number)</td><td style="text-align:left">The given property is greater than the given number value.</td></tr>
+<tr><td style="text-align:left">greater than or equal (number)</td><td style="text-align:left">The given property is greater than or equal to the given number value.</td></tr>
+<tr><td style="text-align:left">less than (number)</td><td style="text-align:left">The given property is less than the given number value.</td></tr>
+<tr><td style="text-align:left">less than or equal (number)</td><td style="text-align:left">The given property is less than or equal to the given number value.</td></tr>
+<tr><td style="text-align:left">has key</td><td style="text-align:left">The JSON property evaluates to an object and contains the given value as a key. Source must be Response Body (JSON). The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">has value</td><td style="text-align:left">The JSON property evaluates to an array and contains the given value as an element. Source must be Response Body (JSON). The check is case sensitive.</td></tr>
+<tr><td style="text-align:left">is null</td><td style="text-align:left">The JSON property has a NULL value. Source must be Response Body (JSON).</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/lemon-docdocs/property"><span class="arrow-prev">← </span><span>Property</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 iHook, Inc.</section></footer></div></body></html>
