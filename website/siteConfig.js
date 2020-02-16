@@ -21,41 +21,37 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Test Site', // Title for your website.
-  tagline: 'A website for testing',
-  url: 'https://your-docusaurus-test-site.com', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  title: 'iHook', // Title for your website.
+  tagline: 'Documentation',
+  url: 'https://caogecym.github.io', // Your website URL
+  baseUrl: '/ihook-doc/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'test-site',
-  organizationName: 'facebook',
+  projectName: 'ihook-doc',
+  organizationName: 'caogecym',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    {href: 'https://ihook.us', label: 'Home'},
+    {href: 'https://ihook.us/company', label: 'About Us'},
+    {href: 'https://ihook.us/dashboard', label: 'Dashboard'}
   ],
 
-  // If you have users set above, you add it here:
-  users,
-
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
-  favicon: 'img/favicon.ico',
+  headerIcon: 'img/infinity-32.png',
+  footerIcon: 'img/infinity-32.png',
+  favicon: 'img/infinity-32.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2b6427',
-    secondaryColor: '#1e461b',
+    primaryColor: '#2c3a59',
+    secondaryColor: '#1e283e',
   },
 
   /* Custom fonts for website */
@@ -73,7 +69,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} iHook, Inc.`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
